@@ -11,7 +11,7 @@ int getTest();
 // creates two trees (one of which is empty),
 // and does some simple tests of tree methods
 int main() {
-
+    
     IntBST bst1, bst2;
 
     // insert data to bst1
