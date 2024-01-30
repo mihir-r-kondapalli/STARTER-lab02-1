@@ -243,62 +243,6 @@ int IntBST::getSuccessor(int value) const{
 // returns true if the node exist and was deleted or false if the node does not exist
 bool IntBST::remove(int value){
 
-    /*Node* temp = getNodeFor(value, root);
-    if(temp==nullptr)
-    {
-        return true;
-    }
-
-    if(temp->parent==nullptr && temp->left==nullptr && temp->right==nullptr)
-    {
-        root = nullptr;
-        delete temp;
-        return true;
-    }
-
-    Node* next = getSuccessorNode(value);
-
-    if(next==nullptr)
-    {
-        if(temp->parent!=nullptr)
-        {
-            temp->left->parent = temp->parent;
-            temp->parent->right=temp->left;
-            delete temp;
-            return true;
-        }
-
-        if(temp->parent==nullptr)
-        {
-            root = temp->left;
-            root->parent = nullptr;
-            delete temp;
-        }
-    }
-
-    Node* prev = getPredecessorNode(value);
-
-    if(prev==nullptr && next!=nullptr)
-    {
-        root = temp->left;
-        root->parent = nullptr;
-        delete temp;
-        return true;
-    }
-
-    temp->left->parent = temp->parent;
-    delete temp;
-    
-    while(prev->right!=nullptr)
-    {
-        prev = prev->right;
-    }
-
-    prev->right = next;
-    next->parent = prev;
-
-    return true;*/
-
     Node* temp = getNodeFor(value, root);
 
     if(temp==nullptr)
