@@ -311,9 +311,9 @@ bool IntBST::remove(int value){
         return true;
     }
 
-    int tval = 0;
     Node* next = getSuccessorNode(temp->info);
-
+    
+    int tval = 0;
     tval = temp->info;
     temp->info = next->info;
     next->info = tval;
@@ -321,14 +321,16 @@ bool IntBST::remove(int value){
     if(next->parent->right == next)
     {
         next->parent->right = next->right;
-        delete next;
-        return true;
     }
-
-    next->parent->left = next->right;
-    if(next->right != nullptr)
-        next->right->parent = next->parent;
+    else
+    {
+        next->parent->left = next->right;
+        if(next->right != nullptr)
+        {
+            next->right->parent = next->parent;
+        }
+    }
+    
     delete next;
-
     return true;
 }
