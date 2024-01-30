@@ -254,7 +254,8 @@ bool IntBST::remove(int value){
     {
         if(temp->parent==nullptr)
         {
-            temp = nullptr;
+            root = nullptr;
+            delete temp;
             return true;
         }
 
