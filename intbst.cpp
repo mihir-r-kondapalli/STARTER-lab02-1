@@ -321,6 +321,7 @@ bool IntBST::remove(int value){
     if(next->parent->right == next)
     {
         next->parent->right = next->right;
+        next->right->parent = next->parent;
     }
     else
     {
@@ -330,7 +331,7 @@ bool IntBST::remove(int value){
             next->right->parent = next->parent;
         }
     }
-    
+
     delete next;
     return true;
 }
