@@ -271,7 +271,11 @@ bool IntBST::remove(int value){
 
     if(temp->left == nullptr)
     {
-        if(temp->parent->left == temp)
+        if(temp==root)
+        {
+            root = root->right;
+        }
+        else if(temp->parent->left == temp)
         {
             temp->parent->left = temp->right;
             temp->right->parent = temp->parent;
@@ -288,7 +292,11 @@ bool IntBST::remove(int value){
 
     if(temp->right == nullptr)
     {
-        if(temp->parent->left == temp)
+        if(temp==root)
+        {
+            root = root->left;
+        }
+        else if(temp->parent->left == temp)
         {
             temp->parent->right = temp->right;
             temp->right->parent = temp->parent;
