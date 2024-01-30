@@ -259,56 +259,43 @@ bool IntBST::remove(int value){
             return true;
         }
 
-        if(temp->parent->info > temp->info)
-        {
+        if(temp->parent->info > temp->info){
             temp->parent->left = nullptr;
-            delete temp;
-            return true;
         }
-        
-        temp->parent->right = nullptr;
+        else{
+            temp->parent->right = nullptr;
+        }
         delete temp;
         return true;
     }
 
-    if(temp->left == nullptr || temp->right == nullptr)
+    if(temp->left == nullptr)
     {
-        if(temp->info == root->info)
+        if(temp->parent->left == temp)
         {
-            if(temp->left == nullptr){
-                root = temp->right;
-            }
-            else{
-                root = temp->left;
-            }
-
-            root->parent = nullptr;
-            delete temp;
-        }
-        
-        int tval = 0;
-        tval = temp->parent->info;
-        temp->parent->info = temp->info;
-        temp->info = tval;
-
-        if(temp->left == nullptr)
-        {
-            if(temp->parent->info > temp->info){
-                temp->parent->left = temp->right;
-            }
-            else{
-                temp->parent->right = temp->right;
-            }
+            temp->parent->left = temp->right;
             temp->right->parent = temp->parent;
         }
         else
         {
-            if(temp->parent->info > temp->info){
-                temp->parent->left = temp->left;
-            }
-            else{
-                temp->parent->right = temp->left;
-            }
+            temp->parent->right = temp->right;
+            temp->right->parent = temp->parent;
+        }
+
+        delete temp;
+        return true;
+    }
+
+    if(temp->right == nullptr)
+    {
+        if(temp->parent->left == temp)
+        {
+            temp->parent->right = temp->right;
+            temp->right->parent = temp->parent;
+        }
+        else
+        {
+            temp->parent->right = temp->left;
             temp->left->parent = temp->parent;
         }
 
