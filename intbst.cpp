@@ -305,7 +305,7 @@ bool IntBST::remove(int value){
         }
         else
         {
-            temp->parent->left = temp->left;
+            temp->parent->right = temp->left;
             temp->left->parent = temp->parent;
         }
 
