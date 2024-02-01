@@ -215,13 +215,16 @@ IntBST::Node* IntBST::getSuccessorNode(int value) const{
             temp = temp->parent;
             return temp;
         }
-        if(temp->parent->info < temp->info){
+        if(temp->parent->info <= temp->info){
             temp = temp->parent;
             while(temp->parent!=nullptr){
                 if(temp->info > value){
                     return temp;
                 }
                 temp = temp->parent;
+            }
+            if(temp->info > value){
+                    return temp;
             }
             return nullptr;
         }
