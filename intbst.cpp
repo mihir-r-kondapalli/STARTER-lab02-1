@@ -320,10 +320,11 @@ bool IntBST::remove(int value){
     temp->info = next->info;
     next->info = tval;
     
-    if(next->parent->right == next)
+    if(next->parent == temp)
     {
-        next->parent->right = next->right;
-        next->right->parent = next->parent;
+        temp->right = next->right;
+        if(next->right != nullptr)
+            next->right->parent = next->parent;
     }
     else
     {
